@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyAI : MonoBehaviour
@@ -10,6 +11,7 @@ public class EnemyAI : MonoBehaviour
     public float attackCooldown = 1.5f;
     public float attackRange = 2f;
     public int scoreValue = 10;
+    public float hitDelay = 0.3f;
 
     private int currentHealth;
     private float nextAttackTime = 0f;
@@ -24,7 +26,8 @@ public class EnemyAI : MonoBehaviour
         currentHealth = maxHealth;
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        agent.stoppingDistance = attackRange - 0.5f;
+        
+        if (agent!= null) agent.stoppingDistance = attackRange - 0.5f;
 
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null) player = playerObj.transform;
@@ -45,21 +48,38 @@ public class EnemyAI : MonoBehaviour
         agent.isStopped = false;
         agent.SetDestination(player.position);
 
-        HandleAnimations(isAttacking: false, isRunning: true);
+        animator.SetBool("isRunning", true);
     }
 
     void Attack()
     {
         agent.isStopped = true;
         transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
-
-        HandleAnimations(isRunning: false, isAttacking: true);
+        animator.SetBool("isRunning", false);
 
         if (Time.time >= nextAttackTime)
         {
-            PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
-            if (playerHealth != null) playerHealth.TakeDamage(damage);
+            animator.SetTrigger("AttackTrigger");
+            
+            StartCoroutine(DoDamageDelayed());
+            
             nextAttackTime = Time.time + attackCooldown;
+        }
+    }
+
+    IEnumerator DoDamageDelayed()
+    {
+        yield return new WaitForSeconds(hitDelay);
+
+        if (!isDead && player != null)
+        {
+            float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+
+            if (distanceToPlayer <= attackRange + 1f)
+            {
+                PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+                if (playerHealth != null) playerHealth.TakeDamage(damage);
+            }
         }
     }
 
@@ -77,15 +97,9 @@ public class EnemyAI : MonoBehaviour
         agent.isStopped = true;
         GetComponent<Collider>().enabled = false;
 
-        HandleAnimations();
+        animator.SetBool("isRunning", false);
 
         transform.Rotate(-90, 0, 0);
         Destroy(gameObject, 1.5f);
-    }
-
-    void HandleAnimations(bool isRunning = false, bool isAttacking = false)
-    {
-        animator.SetBool("isRunning", isRunning);
-        animator.SetBool("isAttacking", isAttacking);
     }
 }
