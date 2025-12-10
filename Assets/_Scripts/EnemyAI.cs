@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
 public class EnemyAI : MonoBehaviour
 {
     [Header("Enemy Settings")]
@@ -44,8 +45,7 @@ public class EnemyAI : MonoBehaviour
         agent.isStopped = false;
         agent.SetDestination(player.position);
 
-        animator.SetBool("isAttacking", false);
-        animator.SetBool("isRunning", true);
+        HandleAnimations(isAttacking: false, isRunning: true);
     }
 
     void Attack()
@@ -53,8 +53,7 @@ public class EnemyAI : MonoBehaviour
         agent.isStopped = true;
         transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
 
-        animator.SetBool("isRunning", false);
-        animator.SetBool("isAttacking", true);
+        HandleAnimations(isRunning: false, isAttacking: true);
 
         if (Time.time >= nextAttackTime)
         {
@@ -78,7 +77,15 @@ public class EnemyAI : MonoBehaviour
         agent.isStopped = true;
         GetComponent<Collider>().enabled = false;
 
+        HandleAnimations();
+
         transform.Rotate(-90, 0, 0);
         Destroy(gameObject, 1.5f);
+    }
+
+    void HandleAnimations(bool isRunning = false, bool isAttacking = false)
+    {
+        animator.SetBool("isRunning", isRunning);
+        animator.SetBool("isAttacking", isAttacking);
     }
 }
