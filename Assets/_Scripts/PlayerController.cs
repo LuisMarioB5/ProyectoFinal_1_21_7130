@@ -3,14 +3,19 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
-    [Header("Configuration")]
+    [Header("Movement Settings")]
     public float moveSpeed = 6f;
     public float gravity = 9.8f;
+
+    [Header("Combat Settings")]
+    public GameObject bulletPrefab;
+    public Transform firePoint;
+    public float fireRate = 0.2f;
+    public float nextFireTime = 0f;
 
     private CharacterController controller;
     private Camera mainCamera;
     private Animator animator;
-
     private Vector3 velocity;
 
     void Start()
@@ -24,6 +29,7 @@ public class PlayerController : MonoBehaviour
     {
         MovePlayer();
         RotateTowardsMouse();
+        HandleShot();
     }
 
     void MovePlayer()
@@ -36,21 +42,12 @@ public class PlayerController : MonoBehaviour
 
         controller.Move(moveGlobal * moveSpeed * Time.deltaTime);
 
-        if (controller.isGrounded && velocity.y < 0)
-        {
-            velocity.y = -2f;
-        }
+        if (controller.isGrounded && velocity.y < 0) velocity.y = -2f;
         velocity.y -= gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
-        // if (moveGlobal.magnitude >= 0.1f)
-        // {
-        //     animator.SetBool("isRunning", true);
-        // }
-        // else
-        // {
-        //     animator.SetBool("isRunning", false);
-        // }
+        if (moveGlobal.magnitude >= 0.1f) animator.SetBool("isRunning", true);
+        else animator.SetBool("isRunning", false);
     }
 
     void RotateTowardsMouse()
@@ -65,5 +62,24 @@ public class PlayerController : MonoBehaviour
             Vector3 lookPosition = new Vector3(pointToLook.x, transform.position.y, pointToLook.z);
             transform.LookAt(lookPosition);
         }
+    }
+
+    void HandleShot()
+    {
+        if (Input.GetMouseButton(0) && Time.time >= nextFireTime)
+        {
+            nextFireTime = Time.time + fireRate;
+            Shoot();
+        }
+    }
+
+    void Shoot()
+    {
+        if (bulletPrefab != null && firePoint != null)
+        {
+            Instantiate(bulletPrefab, firePoint.position, transform.rotation);
+        }
+
+        animator.SetTrigger("Shoot");
     }
 }
