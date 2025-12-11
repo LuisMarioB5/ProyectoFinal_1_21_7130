@@ -13,6 +13,10 @@ public class EnemyAI : MonoBehaviour
     public int scoreValue = 10;
     public float hitDelay = 0.3f;
 
+    [Header("Behaivor")]
+    public bool inifiniteVision = true;
+    public float visionRange = 15f;
+
     private int currentHealth;
     private float nextAttackTime = 0f;
 
@@ -39,8 +43,30 @@ public class EnemyAI : MonoBehaviour
 
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-        if (distanceToPlayer <= attackRange) Attack();
-        else ChasePlayer();
+        bool mustPersue = false;
+
+        if (inifiniteVision) mustPersue = true;
+        else
+        {
+            if (distanceToPlayer <= visionRange) mustPersue = true;
+            else mustPersue = false;   
+        }
+
+        if (mustPersue)
+        {
+            if (distanceToPlayer <= attackRange) Attack();
+            else ChasePlayer();
+        }
+        else
+        {
+            Rest();
+        }
+    }
+
+    private void Rest()
+    {
+        agent.isStopped = true;
+        animator.SetBool("isRunning", false);
     }
 
     void ChasePlayer()

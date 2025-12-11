@@ -114,6 +114,12 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    public void LoadLevel1()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Level1");
+    }
+
     public void LoadLevel2()
     {
         Time.timeScale = 1f;

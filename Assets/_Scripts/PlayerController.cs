@@ -13,6 +13,10 @@ public class PlayerController : MonoBehaviour
     public float fireRate = 0.2f;
     public float nextFireTime = 0f;
 
+    [Header("Sound")]
+    public AudioSource audioSource;
+    public AudioClip shootClip;
+
     private CharacterController controller;
     private Camera mainCamera;
     private Animator animator;
@@ -78,6 +82,8 @@ public class PlayerController : MonoBehaviour
         if (bulletPrefab != null && firePoint != null)
         {
             Instantiate(bulletPrefab, firePoint.position, transform.rotation);
+
+            if (audioSource != null && shootClip != null) audioSource.PlayOneShot(shootClip);
         }
 
         animator.SetTrigger("Shoot");

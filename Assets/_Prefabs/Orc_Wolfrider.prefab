@@ -156,3 +156,5 @@ MonoBehaviour:
   attackRange: 3
   scoreValue: 25
   hitDelay: 0.3
+  inifiniteVision: 0
+  visionRange: 15
