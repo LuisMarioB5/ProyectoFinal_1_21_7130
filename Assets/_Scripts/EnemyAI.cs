@@ -100,6 +100,9 @@ public class EnemyAI : MonoBehaviour
         animator.SetBool("isRunning", false);
 
         transform.Rotate(-90, 0, 0);
+
+        if (GameManager.instance != null) GameManager.instance.UpdateEnemiesCounter(-1);
+
         Destroy(gameObject, 1.5f);
     }
 }

@@ -237,29 +237,9 @@ PrefabInstance:
       propertyPath: hitDelay
       value: 0.3
       objectReference: {fileID: 0}
-    - target: {fileID: 702523528509160621, guid: 5357f31859a83c54bb8054e8005a0fb6, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3513243159459685067, guid: 5357f31859a83c54bb8054e8005a0fb6, type: 3}
       propertyPath: m_Name
       value: Skeleton
-      objectReference: {fileID: 0}
-    - target: {fileID: 3513243159459685067, guid: 5357f31859a83c54bb8054e8005a0fb6, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3513243159459974355, guid: 5357f31859a83c54bb8054e8005a0fb6, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3513243159459974355, guid: 5357f31859a83c54bb8054e8005a0fb6, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3513243159459974355, guid: 5357f31859a83c54bb8054e8005a0fb6, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 3513243159459974355, guid: 5357f31859a83c54bb8054e8005a0fb6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -315,18 +295,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 9788332927128580, guid: 9095ac2c02068ab4c9604dbe234e9bd6, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 9788332927128580, guid: 9095ac2c02068ab4c9604dbe234e9bd6, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 9788332927128580, guid: 9095ac2c02068ab4c9604dbe234e9bd6, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 9788332927128580, guid: 9095ac2c02068ab4c9604dbe234e9bd6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -369,10 +337,6 @@ PrefabInstance:
     - target: {fileID: 9788332927388920, guid: 9095ac2c02068ab4c9604dbe234e9bd6, type: 3}
       propertyPath: m_Name
       value: Orc_Wolfrider
-      objectReference: {fileID: 0}
-    - target: {fileID: 9788332927388920, guid: 9095ac2c02068ab4c9604dbe234e9bd6, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4116052579121314168, guid: 9095ac2c02068ab4c9604dbe234e9bd6, type: 3}
       propertyPath: damage
@@ -495,29 +459,11 @@ MonoBehaviour:
   targetToFollow: {fileID: 1072203293}
   smoothSpeed: 0.125
   offset: {x: 0, y: 0, z: 0}
---- !u!1 &1072203289 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1482912913980003783, guid: b80b670ff38357141acfd3a5902fc771, type: 3}
-  m_PrefabInstance: {fileID: 939530006240531526}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1072203293 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1482912913979705767, guid: b80b670ff38357141acfd3a5902fc771, type: 3}
   m_PrefabInstance: {fileID: 939530006240531526}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1072203295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1072203289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66246a8f007ae5644ac5af60eaa850b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
-  maxHealth: 100
 --- !u!1 &1183911814
 GameObject:
   m_ObjectHideFlags: 0
@@ -724,13 +670,9 @@ PrefabInstance:
       value: Soldier
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 2151791301856497510, guid: b80b670ff38357141acfd3a5902fc771, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1482912913980003783, guid: b80b670ff38357141acfd3a5902fc771, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1072203295}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b80b670ff38357141acfd3a5902fc771, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

@@ -699,6 +699,7 @@ GameObject:
   - component: {fileID: 1482912913970652795}
   - component: {fileID: 8402314802912261155}
   - component: {fileID: 411383892273671793}
+  - component: {fileID: 2629931422542864622}
   m_Layer: 0
   m_Name: Soldier
   m_TagString: Player
@@ -784,10 +785,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   moveSpeed: 6
   gravity: 9.8
-  bulletPrefab: {fileID: 0}
-  firePoint: {fileID: 0}
+  bulletPrefab: {fileID: 4143943850918555817, guid: 7f80fab221c044f4e90baf95ab52a57a, type: 3}
+  firePoint: {fileID: 7743256654402179920}
   fireRate: 0.2
   nextFireTime: 0
+--- !u!114 &2629931422542864622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482912913980003783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66246a8f007ae5644ac5af60eaa850b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  maxHealth: 100
 --- !u!1 &1482912913980003785
 GameObject:
   m_ObjectHideFlags: 0

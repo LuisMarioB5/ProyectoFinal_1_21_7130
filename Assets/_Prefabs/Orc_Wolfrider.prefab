@@ -151,7 +151,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
   maxHealth: 5
-  damage: 35
+  damage: 25
   attackCooldown: 2.5
   attackRange: 3
   scoreValue: 25
+  hitDelay: 0.3

@@ -10,12 +10,16 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
+
+        if (GameManager.instance != null) GameManager.instance.UpdateHealthBar(currentHealth, maxHealth);
     }
 
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        Debug.Log("Injured Player! Health: " + currentHealth);
+
+        if (GameManager.instance != null) GameManager.instance.UpdateHealthBar(currentHealth, maxHealth);
+
         if (currentHealth <= 0)
         {
             Die();
@@ -24,7 +28,6 @@ public class PlayerHealth : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("GAME OVER");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GameManager.instance.GameOver();
     }
 }
