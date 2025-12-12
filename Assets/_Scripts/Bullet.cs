@@ -5,7 +5,7 @@ public class Bullet : MonoBehaviour
     [Header("Bullet Settings")]
     public float speed = 20f;
     public float lifeTime = 2f;
-    public int damage = 1;
+    public int damage = 10;
 
     void Start()
     {

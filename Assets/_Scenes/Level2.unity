@@ -15590,10 +15590,10 @@ MonoBehaviour:
   - {fileID: 522326103}
   - {fileID: 2123447791}
   - {fileID: 1100046723}
-  wavesCount: 5
-  enemiesPerWave: 3
-  spawnInterval: 2
-  timeBetweenWaves: 5
+  wavesCount: 3
+  enemiesPerWave: 6
+  spawnInterval: 2.5
+  timeBetweenWaves: 6
 --- !u!1001 &1564238656
 PrefabInstance:
   m_ObjectHideFlags: 0

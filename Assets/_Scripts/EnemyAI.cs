@@ -10,7 +10,6 @@ public class EnemyAI : MonoBehaviour
     public int damage = 20;
     public float attackCooldown = 1.5f;
     public float attackRange = 2f;
-    public int scoreValue = 10;
     public float hitDelay = 0.3f;
 
     [Header("Behaivor")]
